@@ -6,11 +6,12 @@ import ddf.minim.analysis.FFT;
 
 public abstract class Visual extends PApplet
 {
-	private int frameSize = 512;
+	private int frameSize = 1024;
 	private int sampleRate = 44100;
 
 	private float[] bands;
 	private float[] smoothedBands;
+	private float[] fullband;
 
 	private Minim minim;
 	private AudioInput ai;
@@ -30,6 +31,7 @@ public abstract class Visual extends PApplet
 		fft = new FFT(frameSize, sampleRate);
 
 		bands = new float[(int) log2(frameSize)];
+
   		smoothedBands = new float[bands.length];
 
 	}
@@ -142,5 +144,17 @@ public abstract class Visual extends PApplet
 
 	public FFT getFFT() {
 		return fft;
+	}
+
+	public void setup()
+	{
+		startMinim();
+	}
+	public void draw()
+	{
+		background(0);
+	}
+	public float[] getFullband() {
+		return fullband;
 	}
 }
