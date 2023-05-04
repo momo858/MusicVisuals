@@ -1,8 +1,8 @@
-package ie.tudublin;
+
 
 import ddf.minim.*;
-import ddf.minim.signals.*;
-import processing.core.*;
+import ie.tudublin.*;
+
 
 public class KYVisual1 extends Visual {
 

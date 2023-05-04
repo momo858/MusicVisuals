@@ -1,27 +1,16 @@
 package ie.tudublin;
 
-import processing.core.PApplet;
 import ddf.minim.*;
-import ddf.minim.analysis.FFT;
+import C21421254(Kevin).*;
+import C21392706(Luca).*;
 
-public class Combined extends Visual{
 
+public class Combined extends Visual {
+
+    int visual = 0; // 0 = VilimsVisual, 1 = VilimsSphere, 2 = RotatingAudioBands, 3 = MyVisual 4 = lukeVisual
+    int m = 0;
+    int mode[] = {31, 58, 76, 99, 167, 205, 300};
+    // create the visuals here, these are objects of the classes
+    KYVisual1 kv = new KYVisual(this);
     
-    public void setup() {
-        colorMode(HSB);
-        //noCursor();
-        frameRate(60);
-        startMinim();
-        loadAudio("heroplanet.mp3");
-    }
-    public void setup() {
-        noCursor();
-        colorMode(HSB);
-        smooth();
-        background (0);
-        frameRate(60);
-        loadAudio("heroplanet.mp3");
-    }
-
-
 }
