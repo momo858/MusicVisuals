@@ -33,27 +33,27 @@ public class KYVisual2 extends Visual {
         background(0);
         translate(width / 2, height / 2);
 
-        // Draw stars
+        // Draw asteroids
         for (int i = 0; i < numStars; i++) {
             stars[i].update();
             stars[i].display();
         }
 
-        // Draw cubes reacting to the music
+        // Draw exploding spheres reacting to the music
         float audioLevel = mySound.mix.level();
-        int numCubes = (int) (map(audioLevel, 0, 1, 1, 10));
-        float cubeSize = map(audioLevel, 0, 1, 50, 200);
+        int numSpheres = (int) (map(audioLevel, 0, 1, 1, 10));
+        float sphereSize = map(audioLevel, 0, 1, 50, 200);
 
-        for (int i = 0; i < numCubes; i++) {
+        for (int i = 0; i < numSpheres; i++) {
             pushMatrix();
-            float hue = map(i, 0, numCubes, 0, 255);
+            float hue = map(i, 0, numSpheres, 0, 255);
             colorMode(HSB, 255);
             stroke(hue, 255, 255);
             fill(hue, 255, 255, 127);
-            float x = random(-width / 2 + cubeSize / 2, width / 2 - cubeSize / 2);
-            float y = random(-height / 2 + cubeSize / 2, height / 2 - cubeSize / 2);
+            float x = random(-width / 2 + sphereSize / 2, width / 2 - sphereSize / 2);
+            float y = random(-height / 2 + sphereSize / 2, height / 2 - sphereSize / 2);
             translate(x, y);
-            box(cubeSize);
+            sphere(sphereSize);
             popMatrix();
         }
     }
@@ -71,7 +71,7 @@ public class KYVisual2 extends Visual {
             z -= mySound.mix.level() * 50;
             if (z < 1) {
                 z = width;
-                x = random(-width, width);
+                x = random(-width,width);
                 y = random(-height, height);
             }
         }
@@ -85,8 +85,25 @@ public class KYVisual2 extends Visual {
             colorMode(HSB, 255);
             stroke(hue, 255, 255);
             strokeWeight(2);
-            ellipse(sx, sy, r, r);
+            drawAsteroid(sx, sy, r);
             colorMode(RGB, 255);
+        }
+
+        void drawAsteroid(float x, float y, float r) {
+            int numPoints = 10;
+            float angle = 2 * PI / numPoints;
+            pushMatrix();
+            translate(x, y);
+            beginShape();
+            for (int i = 0; i < numPoints; i++) {
+                float a = angle * i;
+                float d = r * (random(0.8f, 1.2f));
+                float px = d * cos(a);
+                float py = d * sin(a);
+                vertex(px, py);
+            }
+            endShape(CLOSE);
+            popMatrix();
         }
     }
 }
