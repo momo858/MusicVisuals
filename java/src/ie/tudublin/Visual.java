@@ -13,7 +13,7 @@ public abstract class Visual extends PApplet
 	private float[] smoothedBands;
 	private float[] fullband;
 
-	private Minim minim;
+	protected Minim minim;
 	private AudioInput ai;
 	private AudioPlayer ap;
 	private AudioBuffer ab;
@@ -146,15 +146,5 @@ public abstract class Visual extends PApplet
 		return fft;
 	}
 
-	public void setup()
-	{
-		startMinim();
-	}
-	public void draw()
-	{
-		background(0);
-	}
-	public float[] getFullband() {
-		return fullband;
-	}
+	
 }
