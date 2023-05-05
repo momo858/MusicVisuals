@@ -18,9 +18,13 @@ We created a audio music visualiser in Java processing including 6 different vis
 
 # Instructions
 To run these Music Visuals, you do these following steps:
+
 •	Debug and run the Java file called Main.java.
-•	Press 1, 2, 3, 4, 5, 6 keys to run each Music Visuals. 
+
+•	Press 1, 2, 3, 4, 5, 6 keys to run each Music Visuals.
+
 •	The order of the visuals are: LukaVisual1, LukaVisual2, EvinVisual1, EvinVisual2, KevinVisual1,KevinVisual2.
+
 •	By pressing the 7 key you will exit the program.
 # How it works
 The way we have configured our music visual project is by creating individual files containing each of our visuals and then having an overall java file called Combined.java to combine the visuals in a efficient and easy way to debug and compile our main file called Main.java.
@@ -158,31 +162,6 @@ I am most proud of how well the project went. Ienjoyed changing values and colou
 ## Luca:
 I am most proud of the team and our combined effort to make a cool project. 
 I also am proud of how many new concepts I learned about in processing while working throughout this project.
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
+...
 
 
