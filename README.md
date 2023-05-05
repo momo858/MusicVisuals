@@ -9,6 +9,7 @@
 # Description of the assignment
 ## Video
 [![YouTube](http://img.youtube.com/vi/GVyOuS_DB-Q/0.jpg)](https://www.youtube.com/watch?v=GVyOuS_DB-Q)
+This is the youtube video of the combined visuals!
 
 ## Description
 We created a audio music visualiser in Java processing including 6 different visuals. Across all 6 visuals we coded different elements to respond to the volume and frequency of the track “Praise my lord” by ASAP ROCKY.

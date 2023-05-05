@@ -5,10 +5,10 @@ import ddf.minim.analysis.FFT; // Import the FFT class from Minim
 import ie.tudublin.*; // Import the ie.tudublin package
 
 public class gambinovisual2 {
-    FFT fft; // An instance of the FFT class
-    Minim m; // An instance of the Minim class (unused)
-    int x; // Used to make the circle spin
-    int radius = 200; // Radius in pixels of the circle
+    FFT frequencyAnalyzer; // An instance of the FFT class
+    Minim minimInstance; // An instance of the Minim class (unused)
+    int rotationDegree; // Used to make the circle spin
+    int circleRadius = 200; // Radius in pixels of the circle
     Combined gv2; // An instance of the Combined class 
 
     // Constructor that takes an instance of the Combined class as a parameter
@@ -21,7 +21,7 @@ public class gambinovisual2 {
         gv2.translate(gv2.width/2, gv2.height/2); // Translate the origin to the center of the canvas
         gv2.background(0); // Fill the background with black
 
-        fft = new FFT(gv2.mySound.bufferSize(), gv2.mySound.sampleRate()); // Create a new FFT object with the sound buffer size and sample rate
+        frequencyAnalyzer = new FFT(gv2.mySound.bufferSize(), gv2.mySound.sampleRate()); // Create a new FFT object with the sound buffer size and sample rate
 
         // Create circle interior
         gv2.noStroke(); // Disable stroke
@@ -43,25 +43,24 @@ public class gambinovisual2 {
         gv2.rect(-40, -40, 80, 80); // Draw a rectangle at (-40, -40) with a width and height of 80 pixels
         gv2.popMatrix(); // Restore the saved transformation matrix
 
-        if(gv2.mySound.isPlaying()) x += 2; // Circle only rotates while music is playing
+        if(gv2.mySound.isPlaying()) rotationDegree += 2; // Circle only rotates while music is playing
 
         // Audio Visualization
-        fft.forward(gv2.mySound.mix); // Perform a forward FFT on the sound mix
-        float bands = fft.specSize(); // Get the number of frequency bands in the FFT
+        frequencyAnalyzer.forward(gv2.mySound.mix); // Perform a forward FFT on the sound mix
+        float bands = frequencyAnalyzer.specSize(); // Get the number of frequency bands in the FFT
         for(int i = 0; i < bands*2; i++){
             // Starting positions of line
-            float start_x = radius*gv2.cos(gv2.PI*(i+x)/bands);
-            float start_y = radius*gv2.sin(gv2.PI*(i+x)/bands);
-
-            //        // Draw line based on sound
+            float start_x = circleRadius*gv2.cos(gv2.PI*(i+rotationDegree)/bands);
+            float start_y = circleRadius*gv2.sin(gv2.PI*(i+rotationDegree)/bands);
+        // Draw line based on sound
         gv2.stroke(255); // Set stroke color to white
         gv2.strokeWeight(5); // Set stroke weight to 5 pixels
         if (i < bands){
             // Line based on band length
-            gv2.line(start_x, start_y, start_x + fft.getBand(i)*7*gv2.cos(gv2.PI*(i+x)/bands), start_y + fft.getBand(i)*7*gv2.sin(gv2.PI*(i+x)/bands));
+            gv2.line(start_x, start_y, start_x + frequencyAnalyzer.getBand(i)*8*gv2.cos(gv2.PI*(i+rotationDegree)/bands), start_y + frequencyAnalyzer.getBand(i)*8*gv2.sin(gv2.PI*(i+rotationDegree)/bands));
         } else {
             // Line based on frequency
-            gv2.line(start_x, start_y, start_x + fft.getFreq(i)*5*gv2.cos(gv2.PI*(i+x)/bands), start_y + fft.getFreq(i)*5*gv2.sin(gv2.PI*(i+x)/bands));
+            gv2.line(start_x, start_y, start_x + frequencyAnalyzer.getFreq(i)*6*gv2.cos(gv2.PI*(i+rotationDegree)/bands), start_y + frequencyAnalyzer.getFreq(i)*6*gv2.sin(gv2.PI*(i+rotationDegree)/bands));
         }
     }
 
@@ -77,4 +76,3 @@ public class gambinovisual2 {
     gv2.ellipse(0, 0, vol*1500, vol*1500); // Draw an ellipse at the origin with a radius based on volume
 }
 }
-
