@@ -1,10 +1,10 @@
 # Music Visualiser Project
 ![An image](images/combine.png)
-| Name | Student Number | Music Visuals |
-|-----------|-----------|-----------|
-|Kevin Ye | C21421254 |KYVisual1 ,KYVisual2 |
-|Evin Saju Melparambil | C21465094 |ESMVisual1, ESMVisual2 |
-|Luca Ursache | C21392706 |gambinovisual1 , gambinovisual2 |
+| Name                  | Student Number    | Music Visuals                     |
+|-----------            |-----------        |-----------                        |
+|Kevin Ye               | C21421254         |KYVisual1 ,KYVisual2               |
+|Evin Saju Melparambil  | C21465094         |ESMVisual1, ESMVisual2             |
+|           |   C21392706         |gambinovisual1 , gambinovisual2    |
 
 # Description of the assignment
 ## Video
